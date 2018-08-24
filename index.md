@@ -11,6 +11,7 @@ Live cells remain live and dead cells remain dead with the following exception:
 *   A dead cell with exactly three live neighbors becomes alive 
 *   A live cell with one live neighbor or less becomes dead 
 *   A live cell with more than three live neighbors become dead 
+
 ## How I approached the project: 
 I decided to do this project in Javascript, more specifically using the p5.js library since it was a simple way to integrate graphics. 
 I chose to make it so if you click on a square on the grid it changes if state (if click on a live cell, it becomes dead and vice versa). 
