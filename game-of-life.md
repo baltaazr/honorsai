@@ -1,4 +1,5 @@
 ### [Home](index.html)
+### [Code](https://mrprokoala.github.io/game-of-life)
 
 # Game of Life: 
 In this project, we were made to recreate Conway's Game of life in our own fashion. 
