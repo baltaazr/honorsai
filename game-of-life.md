@@ -1,3 +1,5 @@
+### [Home](../index.md)
+
 # Game of Life: 
 In this project, we were made to recreate Conway's Game of life in our own fashion. 
 How the game works is there is a grid with squares that are either alive or dead. 
