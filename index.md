@@ -3,54 +3,8 @@ layout: default
 ---
 
 
-# Game of Life: 
-In this project, we were made to recreate Conway's Game of life in our own fashion. 
-How the game works is there is a grid with squares that are either alive or dead. 
-The alive cells are colored in gray and the dead cells are white. 
-Live cells remain live and dead cells remain dead with the following exception: 
-*   A dead cell with exactly three live neighbors becomes alive 
-*   A live cell with one live neighbor or less becomes dead 
-*   A live cell with more than three live neighbors become dead 
+# [Game of Life](game-of-life.md)
 
-## How I approached the project: 
-I decided to do this project in Javascript, more specifically using the p5.js library since it was a simple way to integrate graphics. 
-I chose to make it so if you click on a square on the grid it changes if state (if click on a live cell, it becomes dead and vice versa). 
-I also added some sliders to increase and decrease the size of the grid, along with some buttons to perform basic functions like: 
-*   "Next" button ran one iteration of the game 
-*   "Play/Stop" button toggled the running of the iterations continuously 
-*   "Random" button Randomized the grid, making it 50/50 chance a square in the grid becomes dead or alive 
-*   "Clear" button made all the cells dead (white)
- 
-## Reflection on the challenges I faced: 
-One the major challenges I faced was making a deep copy (meaning everything is copied) of the array so I can perform an apply the rules to the grids all at once. 
-The reason why this was difficult is because I couldn't use the normal way of creating a copy of an array since the arays in the arrays were still references. 
-Therefore, I had to iterate through each of the arrays in the 2D array and copy each of them individually.
-```js
-newMap = map.map(function (arr) {
-    return arr.slice();
-  });
-```
+# [Gridworld](gridworld.md)
 
-# Gridworld: 
-In this project, we were made to create a virtual world made out of a grid
-
-## How I approached the project: 
-I decided to do this project in Javascript, more specifically using the p5.js library since it was a simple way to integrate graphics. 
- 
-## Reflection on the challenges I faced: 
-The biggest challenge I faced was creating a randomize function that randomized the map in a way the exit was always accessible from any point in the map. I ended up creating several rules for a square in the map to be possibly filled. If the square didn't meet these rules, it would be empty. If it the rules did apply to square, it would've a 50/50 chance of being filled. The rules were:
-* The squares surroundings up to two blocks away are empty
-* The square is only adjacent to one block
-* The square cannot be within a two block radius from the exit
-
-# Braitenberg Vehicles: 
-In this project, we were made to create a virtual world made out of a geid
-
-## How I approached the project: 
-I decided to do this project in Javascript, more specifically using the p5.js library since it was a simple way to integrate graphics. 
- 
-## Reflection on the challenges I faced: 
-The biggest challenge I faced was creating a randomize function that randomized the map in a way the exit was always accessible from any point in the map. I ended up creating several rules for a square in the map to be possibly filled. If the square didn't meet these rules, it would be empty. If it the rules did apply to square, it would've a 50/50 chance of being filled. The rules were:
-* The squares surroundings up to two blocks away are empty
-* The square is only adjacent to one block
-* The square cannot be within a two block radius from the exit
+# [Braitenberg Vehicles](braitenberg.md)
