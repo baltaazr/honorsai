@@ -1,4 +1,4 @@
-### [Home](../index.md)
+### [Home](index.html)
 
 # Gridworld: 
 In this project, we were made to create a virtual world made out of a grid
