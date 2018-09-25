@@ -12,8 +12,11 @@ I decided to do this project in Javascript, more specifically using the p5.js li
  
 ## Reflection on the challenges I faced: 
 One of the biggest challenges I faced was making the vehicle. Should I have 4 classes for each kind of vehicle (Simple, Fear, Aggression, Love) or only two classes (Vehicle and Sensor) and make the different types of vehicles by changing the parameters within the Vehicle/Sensor class. I opted for the latter, so I planned out what each class would have for its parameters.
+
 ![Photo 1](braitenberg-work1.PNG "Work")
+
 This would later help me create my 'Create Mode' function to make your own vehicle since the vehicle didn't have to bound to one specific kind of vehicle.
 
 My second challenge was figuring out how my vehicles would rotate. To solve this, I drew out a sketch of how the vehicle would turn and used my prior knowledge of Geometry to figure out how I would go about rotating the vehicle.
+
 ![Photo 2](braitenberg-work2.PNG "Work")
