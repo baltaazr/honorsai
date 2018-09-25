@@ -1,4 +1,4 @@
-### [Home](../ )
+### [Home](index.md)
 
 # Game of Life: 
 In this project, we were made to recreate Conway's Game of life in our own fashion. 
