@@ -8,3 +8,5 @@ layout: default
 # [Gridworld](gridworld.md)
 
 # [Braitenberg Vehicles](braitenberg.md)
+
+# [Vacuum World](vacuum-world.md)
