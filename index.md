@@ -10,3 +10,5 @@ layout: default
 # [Braitenberg Vehicles](braitenberg.md)
 
 # [Vacuum World](vacuum-world.md)
+
+# [Guessing Game](guessing-game.md)
