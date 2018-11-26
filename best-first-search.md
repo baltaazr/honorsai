@@ -16,9 +16,9 @@ This last type of search is a mix of both UCS and Greedy. It calculates the cost
 ## How I approached the project: 
 I decided to do this project in Javascript, more specifically using the p5.js library since it was a simple way to integrate graphics. 
 I chose to several functions: 
-*   "Add" Added a point on the screen with a specific name (data)
-*   "Link" Linked to points with a specified cost
-*   "Remove" Remove a point
+*   "Add" Adds a point on the screen with a specific name (data)
+*   "Link" Links to points with a specified cost
+*   "Remove" Removes a point
 
 I added buttons for the three searches and had the path found show in the screen.
 
