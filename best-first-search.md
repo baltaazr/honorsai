@@ -21,8 +21,11 @@ I chose to several functions:
 *   "Remove" Remove a point
 
 I added buttons for the three searches and had the path found show in the screen.
+
 I also added a template for the Romanian map and an alphabet without links.
-To link up two nodes, I added two new properties every new link, 'node#' and 'cost#'.
+
+To link up two nodes, I added two new properties every new link, 'node#' and 'cost#' to the node.
+
 For example, if I had a point called 'A' with no links and I wanted it to link to a point called 'B' which already had three links, the new properties added to A would be node1 and cost1, node1 would be a reference to point B and cost1 would be the cost to point B. For point B, the properties that would be added would be node4 and cost 4 since the properties node1, node2, and node3 (same for cost) are already being used by other links. The property node4 in point B would contain a reference to point A and cost4 would contain the cost of point B to A (same as the cost to point A to B).
  
 ## Reflection on the challenges I faced: 
