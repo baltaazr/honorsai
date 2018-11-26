@@ -4,10 +4,13 @@
 # Best First Search: 
 In this project, I created a way to find the best path from one point to another. I used three types of searches that operated differently.
 * Uniform Cost Search
+
 This type of search finds the path by opening the node that cost the least to open, without regard of the node's location in comparison  to the goal. This made it so this search even though it opened more paths than other searches, it would always find the best path.
 * Greedy Search
+
 This type of search finds the path by opening the node that is the closest to the goal, which it found by using a heuristic cost. Because this heuristic cost was sometimes not representative of the actual cost, it was possible to get the wrong answer, however, it found answers without needing to open as many nodes as UCS.
 * A* (A Star) Search
+
 This last type of search is a mix of both UCS and Greedy. It calculates the cost by adding up the past cost to the heuristic cost (distance from the node to the goal) and opens the one with the least cost. This makes it so it opens less nodes than UCS and also tends to get the correct path more often that greedy.
 
 ## How I approached the project: 
@@ -15,7 +18,8 @@ I decided to do this project in Javascript, more specifically using the p5.js li
 I chose to several functions: 
 *   "Add" Added a point on the screen with a specific name (data)
 *   "Link" Linked to points with a specified cost
-*   "Remove" Removed a point
+*   "Remove" Remove a point
+
 I added buttons for the three searches and had the path found show in the screen.
 I also added a template for the Romanian map and an alphabet without links.
 To link up two nodes, I added two new properties every new link, 'node#' and 'cost#'.
