@@ -47,8 +47,8 @@ getCost = node => {
 
 Adding the properties father and fatherCost to nodes (q is the original node, node is the name of the property that references the node):
 ```js
-  let newNode = { ...q[node] };
-  newNode.father = q;
-  newNode.fatherCost = q["cost" + node.substring(4)];
-  queue.push(newNode);
+let newNode = { ...q[node] };
+newNode.father = q;
+newNode.fatherCost = q["cost" + node.substring(4)];
+queue.push(newNode);
 ```
