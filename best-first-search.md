@@ -27,6 +27,7 @@ For example, if I had a point called 'A' with no links and I wanted it to link t
  
 ## Reflection on the challenges I faced: 
 The hardest challenge came at the end when I tried to implement an 8-puzzle solver however wasn't able to. The logic was there however it went on an infinite loop which I was not able to fix in time.
+
 Another difficult part of this project was getting the total cost of the node. To do this, I made it so everytime a node got opened, two new properties would be added  to it, one was father and the other one was fatherCost. Father would just be a referenced to the node that preceded the node and fatherCost was just the cost between the node that preceded it and the actual node. This helped get the total cost of a node by looping through all of a node's fatherCost and addding them all up.
 
 Getting the cost of a node by adding up its fatherCosts:
