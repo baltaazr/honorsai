@@ -12,3 +12,5 @@ layout: default
 # [Vacuum World](vacuum-world.md)
 
 # [Guessing Game](guessing-game.md)
+
+# [Best First Search](best-first-search.md)
