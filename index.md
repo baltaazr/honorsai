@@ -14,3 +14,5 @@ layout: default
 # [Guessing Game](guessing-game.md)
 
 # [Best First Search](best-first-search.md)
+
+# [The Hexagon Game](hexagon-game.md)
