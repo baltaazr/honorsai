@@ -12,4 +12,13 @@ I used Python for this project to practice the programming language. I used pyth
 My biggest challenge was being able to read the csv file containing the letter frequency of all the languages. For this, I used this website to help me read csv files in python.
 https://realpython.com/python-csv/
 ```python
-
+with open('letter-frequency.txt', encoding="utf-8") as csv_file:
+    csv_reader = csv.DictReader(csv_file, delimiter=';')
+    line_count = 0
+    for row in csv_reader:
+        if line_count == 0:
+            for language in row:
+                letterFrequency[language] = {}
+        for language in row:
+            letterFrequency[language][row['Letter']] = row[language]
+```
