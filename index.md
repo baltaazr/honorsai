@@ -16,3 +16,5 @@ layout: default
 # [Best First Search](best-first-search.md)
 
 # [The Hexagon Game](hexagon-game.md)
+
+# [Language Guesser](language-guesser.md)
