@@ -18,3 +18,5 @@ layout: default
 # [The Hexagon Game](hexagon-game.md)
 
 # [Language Guesser](language-guesser.md)
+
+# [Flocking](flocking.md)
