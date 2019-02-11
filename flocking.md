@@ -7,6 +7,7 @@ its nearby flockmates:
 *   Separation: steer to avoid crowding local flockmates
 *   Alignment: steer towards the average heading of local flockmates
 *   Cohesion: steer to move toward the average position of local flockmates
+
 Each boid has direct access to the whole scene's geometric description, but flocking requires that it reacts only to flockmates within a 
 certain small neighborhood around itself. The neighborhood is characterized by a distance (measured from the center of the boid) and an 
 angle, measured from the boid's direction of flight. Flockmates outside this local neighborhood are ignored. The neighborhood could be 
