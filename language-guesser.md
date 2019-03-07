@@ -1,4 +1,5 @@
 ### [Home](index.html)
+### [Code](https://github.com/mrprokoala/language-guesser)
 
 # Language Guesser: 
 In this project, I made a program that detects the language of a certain text file by analyzing it's letter frequency and comparing it to the letter frequency of other languages.
