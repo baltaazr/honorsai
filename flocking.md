@@ -1,4 +1,5 @@
 ### [Home](index.html)
+### [Code](https://github.com/mrprokoala/flocking)
 
 # Flocking: 
 In this project, I created a computer program to model coordinated animal motion such as bird flocks and fish schools. The basic flocking
