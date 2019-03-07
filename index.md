@@ -20,3 +20,5 @@ layout: default
 # [Language Guesser](language-guesser.md)
 
 # [Flocking](flocking.md)
+
+# [Bridge Pattern](bridge-pattern.md)
