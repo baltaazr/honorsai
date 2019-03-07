@@ -1,4 +1,5 @@
 ### [Home](index.html)
+### [Code](https://github.com/mrprokoala/guessing-game)
 
 # Guessing Game: 
 For this project, we made a game based of our previous knowledge of nodes. We made a binary tree made up of nodes pointing to other nodes. During the game, you're asked a yes or no question and based on your response you're redirected to another question that leads from the original question. My topic of the game was games in general so for example like video games and board games.
