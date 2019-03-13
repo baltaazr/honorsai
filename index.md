@@ -22,3 +22,5 @@ layout: default
 # [Flocking](flocking.md)
 
 # [Bridge Pattern](bridge-pattern.md)
+
+# [Double Half Moon](double-half-moon.md)
