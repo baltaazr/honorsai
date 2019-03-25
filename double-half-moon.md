@@ -1,5 +1,5 @@
 ### [Home](index.html)
-### [Code](https://mrprokoala.github.io/game-of-life)
+### [Code](https://github.com/mrprokoala/double-half-moon)
 
 # Double Half Moon: 
 In this project I created a double half moon using Python, specifically PyGame. I split the moon in half and colored the bottom part blue
