@@ -24,3 +24,5 @@ layout: default
 # [Bridge Pattern](bridge-pattern.md)
 
 # [Double Half Moon](double-half-moon.md)
+
+# [Digit Recognition](digit-recognition.md)
