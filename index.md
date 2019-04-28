@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 # Home
 
 # [Game of Life](game-of-life.md)
@@ -26,3 +27,5 @@ layout: default
 # [Double Half Moon](double-half-moon.md)
 
 # [Digit Recognition](digit-recognition.md)
+
+# [Neural Networks](neural-networks.md)
