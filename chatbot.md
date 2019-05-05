@@ -99,4 +99,4 @@ We first start out with ans_partial being filled with zeroe and the beginning of
 
 ## Reflection on the challenges I faced:
 
-By far the biggest challenge of this project was finding the right model for my neural network. After looking in the internet countless of hours for good chatbot neural network models and reading many Medium articles on how LSTM and RNN work, I stumbled upon this one https://towardsdatascience.com/how-to-implement-seq2seq-lstm-model-in-keras-shortcutnlp-6f355f3e5639. I did my best to implement the model on my own with little help from the article other than it laying out the model for me.
+By far the biggest challenge of this project was finding the right model for my neural network. After looking in the internet countless of hours for good chatbot neural network models and reading many Medium articles on how LSTM and RNN work, I stumbled upon this [one](https://towardsdatascience.com/how-to-implement-seq2seq-lstm-model-in-keras-shortcutnlp-6f355f3e5639). I did my best to implement the model on my own with little help from the article other than it laying out the model for me.
