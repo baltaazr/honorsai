@@ -29,3 +29,5 @@ layout: default
 # [Digit Recognition](digit-recognition.md)
 
 # [Neural Networks](neural-networks.md)
+
+# [Chatbot](chatbot.md)
