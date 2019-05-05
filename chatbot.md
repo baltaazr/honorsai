@@ -78,6 +78,7 @@ model.compile(loss='categorical_crossentropy', optimizer=ad)
 
 This is a visual of the architecture of the neural network.
 ![Seq2Seq](seq2seq.png "seq2seq.png")
+
 It uses the [Adam optimizer](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) to reduce the error. We create our inputs for our context and answer and we embed them both using our word2vec system. We apply LSTM to both our context and answer, we merge both of them and lastly add two dense neural layers, one with a relu activation and one with a softmax activation. We then compile it using the optimizer I previoulsy measured and we measure loss using [categorical crossentropy](https://gombru.github.io/2018/05/23/cross_entropy_loss/). Our output is a vector of the size of our dictionary, where the index of the highest number is the word we choose when predicting the output.
 
 Note: I did not come up with the architecture of this neural network, it is a commonly used architecture when it comes to seq2seq network. I simply implemented it.
