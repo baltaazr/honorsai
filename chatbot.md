@@ -32,7 +32,7 @@ Our last step is what we output for Ht and Ct. This is going to be based off you
 
 ### Implementation:
 
-The way I implemented my code was by having three seperate python files that did their own task. These were 'preprocess_data.py', 'train_bot.py' and 'conversation.py'. The last one is the one you want to run to have an actual conversation with the bot.
+The way I implemented my code was by having three seperate python files that did their own task. These were 'preprocess_data.py', 'train.py' and 'chat.py'. The last one is the one you want to run to have an actual conversation with the bot.
 
 ### Preprocess Data:
 
@@ -40,7 +40,7 @@ Firt you want to run the 'preprocess_data.py' to process our raw data. We first 
 
 ### Traning:
 
-Here is where we actually train our model, 'train_bot.py'. This is how our model looks like.
+Here is where we actually train our model, 'train.py'. This is how our model looks like.
 
 ```python
 ad = Adam(lr=0.00005)
@@ -79,9 +79,9 @@ Note: I did not come up with the architecture of this neural network, after spen
 
 We train it by looping through our data created in the previous steps. We also save our weights.
 
-### Conversation:
+### Chat:
 
-In the 'conversation.py' file, we once again create the our model and this time we predict the output by loading in our already trained weights. The decoder turns our tokenized input and turns it into a valid output using the predict function of our model. It does so by inputting our context alongside with a partial answer in a loop.
+In the 'chat.py' file, we once again create the our model and this time we predict the output by loading in our already trained weights. The decoder turns our tokenized input and turns it into a valid output using the predict function of our model. It does so by inputting our context alongside with a partial answer in a loop.
 
 ```python
 ans_partial = np.zeros((1,maxlen_input))
