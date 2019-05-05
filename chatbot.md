@@ -6,28 +6,7 @@ This was an open project where I could chose to do whatever I wanted that relate
 
 ## How I approached the project:
 
-For this project, I decided to use Keras, a high level deep learning library in Python. I have three seperate python files that make up my bot, 'generate_data.py', 'train.py' and 'chat.py' and you run them in that order. I will go over what each of those files do.
-
-### Generate Data:
-
-In this file I turn all my conversation training data into vectors using word2vec. First, I tokenize my data, which is splitting a sentence up into words. I have a word2vec.bin file that already has a vector for each word. I have commented my code to show what each part of my code does. In the end I save my data into a .pickle file to later be loaded.
-
-### Train:
-
-Here I make the model of neural network and train it on my data (extracted from the .pickle file). Here is my model:
-
-```python
-model = Sequential()
-model.add(LSTM(output_dim=300, input_shape=x_train.shape[1:], return_sequences=True,
-               init='glorot_normal', inner_init='glorot_normal', activation='sigmoid'))
-model.add(LSTM(output_dim=300, input_shape=x_train.shape[1:], return_sequences=True,
-               init='glorot_normal', inner_init='glorot_normal', activation='sigmoid'))
-model.add(LSTM(output_dim=300, input_shape=x_train.shape[1:], return_sequences=True,
-               init='glorot_normal', inner_init='glorot_normal', activation='sigmoid'))
-model.add(LSTM(output_dim=300, input_shape=x_train.shape[1:], return_sequences=True,
-               init='glorot_normal', inner_init='glorot_normal', activation='sigmoid'))
-model.compile(loss='cosine_proximity', optimizer='adam', metrics=['accuracy'])
-```
+For this project, I decided to use Keras, a high level deep learning library in Python. I decided to use a recurrent neural network alongside LSTM cells for my chatbot. Here is my best explanation on how these work. Luckily for me, Keras gives you a simple-to-use API that allows you to integrate these highly-complicated concepts with relative ease.
 
 ### RNN Theory:
 
@@ -39,7 +18,7 @@ Since the output of these recurrent neurons at a certain timestep is technically
 
 ### LSTM Theory:
 
-LSTM is a way to keep the memory of initial inputs in a sequence so the network doesn't "forget" the first inputs, as information is lost at each step going through the RNN. We do this by modifying the 'memory cells' of a recurrent neural network. This is what an LSTM cell looks like.
+LSTM stands for Long-Short Term Memory, and it is a way to keep the memory of initial inputs in a sequence so the network doesn't "forget" the first inputs, as information is lost at each step going through the RNN. We do this by modifying the 'memory cells' of a recurrent neural network. This is what an LSTM cell looks like.
 ![LSTM Example](lstm.png "LSTM")
 Here we still have those original inputs from a normal RNN, but now we have a third input, called the 'cell state', represented as Ct-1. As outputs we have Ht, which is the original output, but now we also have a new cell state, Ct.
 ![Forget Gate](forget-gate.png "Forget Gate")
@@ -51,9 +30,53 @@ Here we update the old cell state by multiplying the old state by the vector out
 ![Output Step](output-lstm.png "Update Cell State")
 Our last step is what we output for Ht and Ct. This is going to be based off your cell state, just a filtered version. Using Ht-1 and Xt, we pass that into a sigmoid layer, which decides what parts of the cell state we're going to be outputting. Then we put the cell state through a hyperbolic tangent so it pushes the values to be between -1 and 1 and we're going to then multiply it by the outputs of the sigmoid gate, so that we only output the parts that we decided to.
 
-### Chat:
+### Implementation:
+The way I implemented my code was by having 4 seperate python files that did their own task. These were 'split_qa.py', 'get_train_data.py', 'train_bot.py' and 'conversation.py'. The last was is the one you want to run to have an actual conversation with the bot.
 
-In my chat.py file, I essentially run a while loop forever that asks the user for input. I then transform the user's input into data I can feed into my model by first tokenizing it and then transforming the words to vectors using the same word2vec proccess I used when generating my data. I then print out the output.
+### Splitting Questions and Answers:
+Firt you want to run the 'split_qa.py' file, which takes in a 'dialog_simple' file and outputs two seperate files, answers and context
+
+### Padding the Questions and Answers:
+Here, in the 'get_train_data.py' file, we add padding to our questions and answers to make it fit our inputs of our model. If either or questions or answers exceed the size of the inputs, we cut out the data.
+
+### Traning:
+Here is where we actually train our model, 'train_bot.py'. This is how our model looks like.
+```python
+ad = Adam(lr=0.00005)
+
+input_context = Input(shape=(maxlen_input,),
+                      dtype='int32', name='input_context')
+input_answer = Input(shape=(maxlen_input,), dtype='int32', name='input_answer')
+LSTM_encoder = LSTM(sentence_embedding_size, init='lecun_uniform')
+LSTM_decoder = LSTM(sentence_embedding_size, init='lecun_uniform')
+if os.path.isfile(weights_file):
+    Shared_Embedding = Embedding(
+        output_dim=word_embedding_size, input_dim=dictionary_size, input_length=maxlen_input)
+else:
+    Shared_Embedding = Embedding(output_dim=word_embedding_size, input_dim=dictionary_size, weights=[
+                                 embedding_matrix], input_length=maxlen_input)
+word_embedding_context = Shared_Embedding(input_context)
+context_embedding = LSTM_encoder(word_embedding_context)
+
+word_embedding_answer = Shared_Embedding(input_answer)
+answer_embedding = LSTM_decoder(word_embedding_answer)
+
+merge_layer = merge([context_embedding, answer_embedding],
+                    mode='concat', concat_axis=1)
+out = Dense(dictionary_size/2, activation="relu")(merge_layer)
+out = Dense(dictionary_size, activation="softmax")(out)
+
+model = Model(input=[input_context, input_answer], output=[out])
+
+model.compile(loss='categorical_crossentropy', optimizer=ad)
+```
+I use the [Adam optimizer](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) to reduce the error. We create our inputs for our context and answer and we embed them both using our word2vec system. We apply LSTM to both our context and answer, we merge both of them and lastly add two dense neural layers, one with a relu activation and one with a softmax activation. We then compile it using the optimizer I previoulsy measured and we measure loss using [categorical crossentropy](https://gombru.github.io/2018/05/23/cross_entropy_loss/). We train it by looping through our data and running
+```python
+model.fit([Q, A], Y, batch_size=BatchSize, epochs=1)
+```
+
+### Conversation:
+In the 'conversation.py' file, we once again create the our model and this time we predict the output by loading in our already trained weights. The decoder turns our tokenized input and turns it into a valid output with text and probabilty recieved from the predict function of our model. We once again use our vocubulary_movie file to turn our words into vectors.
 
 ## Reflection on the challenges I faced:
 
