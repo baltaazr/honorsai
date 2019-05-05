@@ -32,15 +32,11 @@ Our last step is what we output for Ht and Ct. This is going to be based off you
 
 ### Implementation:
 
-The way I implemented my code was by having 4 seperate python files that did their own task. These were 'split_qa.py', 'get_train_data.py', 'train_bot.py' and 'conversation.py'. The last one is the one you want to run to have an actual conversation with the bot.
+The way I implemented my code was by having three seperate python files that did their own task. These were 'preprocess_data.py', 'train_bot.py' and 'conversation.py'. The last one is the one you want to run to have an actual conversation with the bot.
 
-### Splitting Questions and Answers:
+### Preprocess Data:
 
-Firt you want to run the 'split_qa.py' file, which takes in a 'dialog_simple' file and outputs two seperate files, answers and context.
-
-### Padding the Questions and Answers:
-
-Here, in the 'get_train_data.py' file, we add padding to our questions and answers to make it fit our inputs of our model. If either or questions or answers exceed the size of the inputs, we cut out the data. Here we also add our 'BOS' (beginning of sentence) and 'EOS' (end of sentence) to signal to the bot when to end it's sentences when training.
+Firt you want to run the 'preprocess_data.py' to process our raw data. We first take in a 'dialog_simple' file and outputs two seperate files, answers and context. Then we add padding to our questions and answers to make it fit our inputs of our model. If either or questions or answers exceed the size of the inputs, we cut out the data. Here we also add our 'BOS' (beginning of sentence) and 'EOS' (end of sentence) to signal to the bot when to end it's sentences when training.
 
 ### Traning:
 
