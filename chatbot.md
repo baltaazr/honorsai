@@ -31,16 +31,21 @@ Here we update the old cell state by multiplying the old state by the vector out
 Our last step is what we output for Ht and Ct. This is going to be based off your cell state, just a filtered version. Using Ht-1 and Xt, we pass that into a sigmoid layer, which decides what parts of the cell state we're going to be outputting. Then we put the cell state through a hyperbolic tangent so it pushes the values to be between -1 and 1 and we're going to then multiply it by the outputs of the sigmoid gate, so that we only output the parts that we decided to.
 
 ### Implementation:
+
 The way I implemented my code was by having 4 seperate python files that did their own task. These were 'split_qa.py', 'get_train_data.py', 'train_bot.py' and 'conversation.py'. The last one is the one you want to run to have an actual conversation with the bot.
 
 ### Splitting Questions and Answers:
+
 Firt you want to run the 'split_qa.py' file, which takes in a 'dialog_simple' file and outputs two seperate files, answers and context.
 
 ### Padding the Questions and Answers:
+
 Here, in the 'get_train_data.py' file, we add padding to our questions and answers to make it fit our inputs of our model. If either or questions or answers exceed the size of the inputs, we cut out the data. Here we also add our 'BOS' (beginning of sentence) and 'EOS' (end of sentence) to signal to the bot when to end it's sentences when training.
 
 ### Traning:
+
 Here is where we actually train our model, 'train_bot.py'. This is how our model looks like.
+
 ```python
 ad = Adam(lr=0.00005)
 
@@ -70,14 +75,19 @@ model = Model(input=[input_context, input_answer], output=[out])
 
 model.compile(loss='categorical_crossentropy', optimizer=ad)
 ```
-It uses the [Adam optimizer](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) to reduce the error. We create our inputs for our context and answer and we embed them both using our word2vec system. We apply LSTM to both our context and answer, we merge both of them and lastly add two dense neural layers, one with a relu activation and one with a softmax activation. We then compile it using the optimizer I previoulsy measured and we measure loss using [categorical crossentropy](https://gombru.github.io/2018/05/23/cross_entropy_loss/). Our output is a vector of the size of our dictionary, where the index of the highest number is the word we choose when predicting the output. 
 
-Note: I did not come up with the architecture of this neural network, it is a commonly used architecture when it comes to seq2seq network. I simply implemented it. 
+This is a visual of the architecture of the neural network.
+![Seq2Seq](seq2seq.png "seq2seq.png")
+It uses the [Adam optimizer](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) to reduce the error. We create our inputs for our context and answer and we embed them both using our word2vec system. We apply LSTM to both our context and answer, we merge both of them and lastly add two dense neural layers, one with a relu activation and one with a softmax activation. We then compile it using the optimizer I previoulsy measured and we measure loss using [categorical crossentropy](https://gombru.github.io/2018/05/23/cross_entropy_loss/). Our output is a vector of the size of our dictionary, where the index of the highest number is the word we choose when predicting the output.
+
+Note: I did not come up with the architecture of this neural network, it is a commonly used architecture when it comes to seq2seq network. I simply implemented it.
 
 We train it by looping through our data created in the previous steps. We also save our weights.
 
 ### Conversation:
+
 In the 'conversation.py' file, we once again create the our model and this time we predict the output by loading in our already trained weights. The decoder turns our tokenized input and turns it into a valid output using the predict function of our model. It does so by inputting our context alongside with a partial answer in a loop.
+
 ```python
 ans_partial = np.zeros((1,maxlen_input))
     ans_partial[0, -1] = 2  #  the index of the symbol BOS (begin of sentence)
@@ -89,6 +99,7 @@ ans_partial = np.zeros((1,maxlen_input))
         ans_partial[0, 0:-1] = ans_partial[0, 1:]
         ans_partial[0, -1] = mp
 ```
+
 We first start out with ans_partial being filled with zeroe and the beginning of the sentence (BOS) as the last index of the array. As it iterates through the loop, we add the outputs of model.predict into the end of the array. We input into our model.predict our context and our partial answer, and it returns a vector of the size of our vocabulary and we add the index of the highest number in the vector. Once the bot feels like it's done with its sentence, it will output have the 3rd index as it's highest number in the vector, symbolizing it's the end of the sentence (EOS) (since 'EOS' is the 3rd index in our vocabulary). We then turn our answer of vectors into words using our vocabulary and we output it to the user.
 
 ## Reflection on the challenges I faced:
