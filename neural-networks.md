@@ -4,7 +4,7 @@
 
 # Neural Networks:
 
-In this project, we made an artificial neural network to classify a double half moon.
+In this project, I made an artificial neural network to classify a double half moon.
 
 ## How I approached the project:
 
