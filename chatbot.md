@@ -76,12 +76,9 @@ model = Model(input=[input_context, input_answer], output=[out])
 model.compile(loss='categorical_crossentropy', optimizer=ad)
 ```
 
-This is a visual of the architecture of the neural network.
-![Seq2Seq](seq2seq.png "seq2seq.png")
-
 It uses the [Adam optimizer](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) to reduce the error. We create our inputs for our context and answer and we embed them both using our word2vec system. We apply LSTM to both our context and answer, we merge both of them and lastly add two dense neural layers, one with a relu activation and one with a softmax activation. We then compile it using the optimizer I previoulsy measured and we measure loss using [categorical crossentropy](https://gombru.github.io/2018/05/23/cross_entropy_loss/). Our output is a vector of the size of our dictionary, where the index of the highest number is the word we choose when predicting the output.
 
-Note: I did not come up with the architecture of this neural network, it is a commonly used architecture when it comes to seq2seq network. I simply implemented it.
+Note: I did not come up with the architecture of this neural network, after spending countless hours testing out different architectures on the internet, I stumbled upon this one and decided it was the best one.
 
 We train it by looping through our data created in the previous steps. We also save our weights.
 
@@ -105,4 +102,4 @@ We first start out with ans_partial being filled with zeroe and the beginning of
 
 ## Reflection on the challenges I faced:
 
-The biggest challenge I faced was training. It would take extremely long to train my model, only to have it be not so good (aka the chatbot responded gibberish). Find good data to train it on was also hard. In the end, I decided to look for already pre-tained weights online that would fit my model when presenting so it didn't output gibberish.
+By far the biggest challenge of this project was finding the right model for my neural network. After looking in the internet countless of hours for good chatbot neural network models and reading many Medium articles on how LSTM and RNN work, I stumbled upon this one https://towardsdatascience.com/how-to-implement-seq2seq-lstm-model-in-keras-shortcutnlp-6f355f3e5639. I did my best to implement the model on my own with little help from the article other than it laying out the model for me.
