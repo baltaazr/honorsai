@@ -1,6 +1,6 @@
 ### [Home](index.html)
 
-# Chatbot Keras:
+# Chatbot:
 
 This was an open project where I could chose to do whatever I wanted that relates to Machine Learning. I decided to do a simple chatbot you can talk to.
 
