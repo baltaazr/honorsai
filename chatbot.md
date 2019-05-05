@@ -70,7 +70,11 @@ model = Model(input=[input_context, input_answer], output=[out])
 
 model.compile(loss='categorical_crossentropy', optimizer=ad)
 ```
-It uses the [Adam optimizer](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) to reduce the error. We create our inputs for our context and answer and we embed them both using our word2vec system. We apply LSTM to both our context and answer, we merge both of them and lastly add two dense neural layers, one with a relu activation and one with a softmax activation. We then compile it using the optimizer I previoulsy measured and we measure loss using [categorical crossentropy](https://gombru.github.io/2018/05/23/cross_entropy_loss/). Our output is a vector of the size of our dictionary, where the index of the highest number is the word we choose when predicting the output. Note: I did not come up with the architecture of this neural network, it is a commonly used architecture when it comes to seq2seq network. I simply implemented it. We train it by looping through our data created in the previous steps. We also save our weights.
+It uses the [Adam optimizer](https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/) to reduce the error. We create our inputs for our context and answer and we embed them both using our word2vec system. We apply LSTM to both our context and answer, we merge both of them and lastly add two dense neural layers, one with a relu activation and one with a softmax activation. We then compile it using the optimizer I previoulsy measured and we measure loss using [categorical crossentropy](https://gombru.github.io/2018/05/23/cross_entropy_loss/). Our output is a vector of the size of our dictionary, where the index of the highest number is the word we choose when predicting the output. 
+
+Note: I did not come up with the architecture of this neural network, it is a commonly used architecture when it comes to seq2seq network. I simply implemented it. 
+
+We train it by looping through our data created in the previous steps. We also save our weights.
 
 ### Conversation:
 In the 'conversation.py' file, we once again create the our model and this time we predict the output by loading in our already trained weights. The decoder turns our tokenized input and turns it into a valid output using the predict function of our model. It does so by inputting our context alongside with a partial answer in a loop.
