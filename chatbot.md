@@ -85,14 +85,14 @@ In the 'chat.py' file, we once again create the our model and this time we predi
 
 ```python
 ans_partial = np.zeros((1,maxlen_input))
-    ans_partial[0, -1] = 2  #  the index of the symbol BOS (begin of sentence)
+ans_partial[0, -1] = 2  #  the index of the symbol BOS (begin of sentence)
     for k in range(maxlen_input - 1):
         # INPUTTING RAW CONTEXT AND PARTIAL ANSWER INTO MODEL
         ye = model.predict([raw_context, ans_partial])
         # TAKING THE WORD WITH THE HIGHEST OUTPUT AND ADDING IT TO OUR PARTIAL ANSWER
         mp = np.argmax(ye)
-        ans_partial[0, 0:-1] = ans_partial[0, 1:]
-        ans_partial[0, -1] = mp
+        ans_partial[0][0:-1] = ans_partial[0][1:]
+        ans_partial[0][-1] = mp
 ```
 
 We first start out with ans_partial being filled with zeroe and the beginning of the sentence (BOS) as the last index of the array. As it iterates through the loop, we add the outputs of model.predict into the end of the array. We input into our model.predict our context and our partial answer, and it returns a vector of the size of our vocabulary and we add the index of the highest number in the vector. Once the bot feels like it's done with its sentence, it will output have the 3rd index as it's highest number in the vector, symbolizing it's the end of the sentence (EOS) (since 'EOS' is the 3rd index in our vocabulary). We then turn our answer of vectors into words using our vocabulary and we output it to the user.
