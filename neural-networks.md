@@ -1,6 +1,6 @@
 ### [Home](index.html)
 
-### [Code](https://github.com/mrprokoala/neural-networks)
+### [Code](https://github.com/balta-z-r/neural-networks)
 
 # Neural Networks:
 
