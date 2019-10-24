@@ -1,5 +1,5 @@
 ### [Home](index.html)
-### [Code](https://hexagongame.epicgamer.org/)
+### [Code](https://balta-z-r.github.io/hexagon-game/)
 
 # The Hexagon Game: 
 In this project, I utilized the greedy search (using heuristic) to make a game of a hexagon grid. You spawn in in the center of the map, which is a radius of hexagons, and you must reach the green hexagon without touching the red ones.
